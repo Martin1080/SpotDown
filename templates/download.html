@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/img/spotify.png" type="image/x-icon">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" type="text/css" href="static/css/download.css">
+    <title>Spotify Downloader</title>
+
+    <script src="https://kit.fontawesome.com/bb8c13e4ed.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div><h1>Download Page</h1></div>
+        <div class="song">
+            <a href="{{ url_for('views.download') }}" class="btn" download>download</a>
+            <img src="{{cover_url}}" alt="track/album/playlists cover">
+            <div class="box">{{ file_size }} MB</div>
+            <br>
+            <a href="{{ url_for('views.home') }}" class="btn">back to home</a>
+        </div>
+    </div>
+    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+    <div class="footer">
+        <a href="https://www.youtube.com/Martin1080" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/_.martin1080._" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/Martin1080" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</body>
+</html>

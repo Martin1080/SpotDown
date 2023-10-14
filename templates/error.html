@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Downloader</title>
+    <link rel="icon" href="static/img/spotify.png" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <script src="https://kit.fontawesome.com/bb8c13e4ed.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Download Failed</h1>
+        <h2 id="reason"></h2>
+        <h2><span>Error: </span>{{exception}}</h2>
+        <a href="{{ url_for('views.home') }}" class="btn error">back to home</a>
+    </div> 
+    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+    <div class="footer">
+        <a href="https://www.youtube.com/Martin1080" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/_.martin1080._" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/Martin1080" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <script>
+        var exception = String("{{ short|safe }}");
+        if (exception.startsWith("http") === true) {
+            document.getElementById('reason').innerHTML = "URL or song not found";
+        } else {
+            document.getElementById('reason').innerHTML = "Other error";
+        }
+    </script>
+</body>
+</html>
