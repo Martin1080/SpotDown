@@ -18,8 +18,8 @@ Adwantage is Python and Flask knowedge, but it isn't necessary.
 ## Setup 🖥
 
 ### Requirements
-- Python 3.9 or newer
-- [requirements.txt](https://github.com/Martin1080)
+- [Python 3.9](https://www.python.org) or newer
+- [requirements.txt](https://github.com/Martin1080/SpotDown/blob/main/requirements.txt)
 
 ### Setup
 Download the repository zip file and extract it.
