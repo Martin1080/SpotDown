@@ -4,6 +4,7 @@ import os
 import zipfile
 import time
 import threading
+import shutil
 
 views = Blueprint(__name__, "views")
 song_path = ""
@@ -38,6 +39,7 @@ def delete_file_after_delay(path, duration):
 @views.route("/", methods=['GET', 'POST'])
 def home():
     global text_variable, metadata
+    song_url = "static/song.mp3"
     if request.method == 'POST':
         if 'text_input' in request.form:
             text_variable = request.form['text_input']
@@ -46,7 +48,7 @@ def home():
         print(str(metadata['bitrate']) + "  " + str(text_variable))
         return jsonify({'text_variable': text_variable, 'select_variable': metadata['bitrate']})
     
-    return render_template("index.html")
+    return render_template("index.html", song_url=song_url)
 
 @views.route('/enter')
 def enter():
@@ -64,10 +66,13 @@ def enter():
                     zipf.write(song, os.path.basename(song))
                     os.remove(song)
 
-            return render_template("download.html", cover_url=songs["metadata"][0], file_size=round(get_file_size_in_mb(song_path), 2))
+            return render_template("download.html", cover_url=songs["metadata"][0], file_size=round(get_file_size_in_mb(song_path), 2), song_name=song_path)
         else:
             single_song = spotify.download_single(text_variable, metadata)
-            song_path = str(single_song["path"][0])
+            temp_path = str(single_song["path"][0])
+            dist_path = "static\\" + str(single_song["path"][0])
+            shutil.move(temp_path, dist_path)
+            song_path = dist_path
             text_variable = ""
             metadata = {
             "bitrate": "320k",
