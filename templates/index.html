@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/img/spotify.png" type="image/x-icon">
+
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <title>Spotify Downloader</title>
+
+    <script src="https://kit.fontawesome.com/bb8c13e4ed.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function showLoader() {
+            $(".loader-wrapper").fadeIn("slow");
+        }
+
+        $(document).ready(function () {
+            $("#loadButton").click(function () {
+                document.getElementById("loading-text").style.display = "block";
+                showLoader();
+            });
+        });
+
+        $(window).on("load", function () {
+            $(".loader-wrapper").fadeOut("slow");
+            document.getElementById("loading-text").style.display = "none";
+        });
+
+        function updateTextVariable() {
+            var userInput = document.getElementById('text_input').value;
+
+            $.post("/", { 'text_input': userInput }, function (response) {
+                //document.getElementById('text_variable').innerText = response.text_variable;
+            });
+        }
+        function updateOptionVariable() {
+            var selectInput = document.getElementById('select_input');
+            var selectedValue = selectInput.value;
+
+            $.post("/", { 'select_input': selectedValue }, function (response) {
+                // Update the variable if needed
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loader-wrapper">
+            <h1 id="loading-text">loading</h1>
+            <span class="loader"><span class="loader-inner"></span></span>
+        </div>
+        <div>
+            <h1>spotify downloader</h1>
+            <h2>Download tracks, albums and playlists from Spotify for free.</h2>
+        </div>
+        <div class="form">
+            <h3>enter song name or URL</h3>
+            <form method="post">
+                <input type="text" class="input" id="text_input" onkeyup="updateTextVariable()"
+                    placeholder="Example: https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT?si=966c848767f8439c">
+                <a href="{{ url_for('views.enter') }}" id="loadButton" class="btn">load</a>
+            </form>
+            <form method="post">
+                <select id="select_input" class="select" onchange="updateOptionVariable()">
+                    <option value="320k" disabled selected hidden>Select Bitrate</option>
+                    <option value="320k">320kbps</option>
+                    <option value="256k">256kbps</option>
+                    <option value="192k">192kbps</option>
+                    <option value="128k">128kbps</option>
+                    <option value="96k">96kbps</option>
+                    <option value="64k">64kbps</option>
+
+                </select>
+            </form>
+            <h4>Note: We do not host any copyrighted materials. Instead, we utilize third-party sources to provide our
+                users with the content they seek. We should not be held liable for any content or materials accessed
+                through our platform.</h4>
+        </div>
+        <div class="songs">
+            <iframe src="https://open.spotify.com/embed/track/5aJT7dU40Ry4zz1zI34845?utm_source=generator&theme=0"
+                class="three-frames" width="23%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                scrolling="no"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/2nLtzopw4rPReszdYBJU6h?utm_source=generator&theme=0"
+                class="three-frames" width="23%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                scrolling="no"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/3ss7pNB2478DaTiaYxjAsY?utm_source=generator&theme=0"
+                class="three-frames" width="23%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                scrolling="no"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/42QJ7iyl66MSJh5szVe4sF?utm_source=generator&theme=0"
+                width="23%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                scrolling="no"></iframe>
+        </div>
+
+    </div>
+    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+    <div class="footer">
+        <a href="https://www.youtube.com/Martin1080" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/_.martin1080._" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/Martin1080" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+
+</body>
+
+</html>

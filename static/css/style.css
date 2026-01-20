@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+
+
+html {
+  background: #000000;
+  height: 100%;
+  color: #FFFFFF;
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /*scroll-padding-top: 5rem;*/
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  /* Set the body to a flex container to enable vertical centering */
+  display: flex;
+  flex-direction: column;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #757575;
+}
+
+::selection {
+  background: #181818;
+}
+
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*background-color: #0e361c;*/
+  width: 70%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 36px;
+  text-align: center;
+}
+
+h2 {
+  color: #757575;
+  margin: 0.2rem 0 2rem 0;
+  font-weight: 400;
+  font-size: 22px;
+  text-align: center;
+}
+
+h2 span {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+h3 {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+h4 {
+  color: #757575;
+  margin-top: 18px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+  /*background-color: aqua;*/
+}
+
+form {
+  padding-top: 10px;
+}
+
+.btn {
+  float: right;
+  width: 10%;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  display: inline-block;
+  border: 0.2rem solid #25b72b;
+  color: #FFFFFF;
+  cursor: pointer;
+  background: none;
+  font-size: 1.7rem;
+  padding: 1rem 0;
+}
+
+.btn.error {
+  float: none;
+  margin: 0 auto;
+  width: 18%;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  display: inline-block;
+  border: 0.2rem solid #25b72b;
+  color: #FFFFFF;
+  cursor: pointer;
+  background: none;
+  font-size: 1.7rem;
+  padding: 1rem 0;
+}
+
+.btn:hover {
+  background: #25b72b;
+  color: #000000;
+}
+
+.input {
+  height: 49px;
+  width: 89%;
+  /*border: 0.2rem solid #1ed760;*/
+  border: 0.2rem solid #25b72b;
+  background: transparent;
+  text-transform: none;
+  font-size: 1.6rem;
+  color: #d1d1d1;
+  padding: 0 1.3rem;
+}
+
+.select {
+  height: 49px;
+  width: 22%;
+  border: 0.2rem solid #25b72b;
+  background: #000000;
+  text-transform: none;
+  font-size: 1.6rem;
+  color: #d1d1d1;
+  padding: 0 1.3rem;
+}
+
+.songs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px 0px 20px;
+}
+
+iframe {
+  margin: 0 1%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+iframe:first-of-type {
+  margin-left: 0;
+}
+
+iframe:last-of-type {
+  margin-right: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #25b72b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  z-index: 999;
+}
+
+i {
+  padding: 0 50px;
+  font-size: 30px;
+  color: #000000;
+}
+
+
+
+/* LOADING */
+.loader-wrapper {
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading-text {
+  display: none;
+  margin-right: 1.6%;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #FFFFFF;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #FFFFFF;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+
+
+/* WAVE */
+section {
+  flex-grow: 1;
+  margin-bottom: 50px;
+  position: relative;
+  width: 100%;
+  height: 22vh;
+}
+
+section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('../img/wave.png');
+  filter: invert(82%) sepia(14%) saturate(3327%) hue-rotate(77deg) brightness(300%) contrast(86%);
+  background-size: 1000px 100px;
+}
+
+section .wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 3;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+section .wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 2;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+section .wave.wave3 {
+  animation: animate 30s linear infinite;
+  z-index: 1;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+section .wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 0;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+
+
+@media (max-width: 1100px) {
+  .container {
+    padding: 1rem;
+    /*background-color: #0e361c;*/
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px 0 10px;
+  }
+
+  .songs {
+    justify-content: space-between;
+    padding: 20px 10px 0px 10px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .songs {
+    display: none;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .btn {
+    width: 40%;
+    margin-top: 10px;
+    padding: 1rem 0;
+  }
+
+  .btn.error {
+    width: 25%;
+    margin-top: 10px;
+    padding: 1rem 0;
+  }
+
+  .select {
+    width: 34%;
+  }
+}
