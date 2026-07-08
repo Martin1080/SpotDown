@@ -1,4 +1,4 @@
-[SpotDown](https://github.com/Martin1080/SpotDown) 👽
+👽[SpotDown](https://github.com/Martin1080/SpotDown)
 ====
 
 Official [SpotDown](https://github.com/Martin1080/SpotDown) documentation.
@@ -13,7 +13,7 @@ SpotDown does not host copyrighted materials. It uses third-party sources to pro
 
 Python and Flask knowledge is helpful, but it is not required to run the app.
 
-## Setup 🖥
+🖥## Setup
 
 ### Requirements
 
