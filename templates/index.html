@@ -34,7 +34,9 @@
         function updateTextVariable() {
             var userInput = document.getElementById('text_input').value;
 
-            $.post("/", { 'text_input': userInput }, function (response) {
+            var selectedValue = document.getElementById('select_input').value;
+
+            $.post("/", { 'text_input': userInput, 'select_input': selectedValue }, function (response) {
                 //document.getElementById('text_variable').innerText = response.text_variable;
             });
         }
@@ -68,14 +70,9 @@
             </form>
             <form method="post">
                 <select id="select_input" class="select" onchange="updateOptionVariable()">
-                    <option value="320k" disabled selected hidden>Select Bitrate</option>
-                    <option value="320k">320kbps</option>
-                    <option value="256k">256kbps</option>
-                    <option value="192k">192kbps</option>
-                    <option value="128k">128kbps</option>
-                    <option value="96k">96kbps</option>
-                    <option value="64k">64kbps</option>
-
+                    {% for bitrate in bitrates %}
+                    <option value="{{ bitrate }}" {% if bitrate == selected_bitrate %}selected{% endif %}>{{ bitrate[:-1] }}kbps</option>
+                    {% endfor %}
                 </select>
             </form>
             <h4>Note: We do not host any copyrighted materials. Instead, we utilize third-party sources to provide our

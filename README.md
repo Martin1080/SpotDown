@@ -1,52 +1,67 @@
-[SpotDown](https://github.com/Martin1080/Discord.php) 👽
+[SpotDown](https://github.com/Martin1080/SpotDown)
 ====
 
-Official [SpotDown](https://github.com/Martin1080/SpotDown) Documentation
+Official [SpotDown](https://github.com/Martin1080/SpotDown) documentation.
 
-Discover the ultimate Spotify Downloader – Your gateway to converting your favorite Spotify tracks into high-quality MP3 files at up to 320kbps. Enjoy your music offline, anytime, anywhere!
+SpotDown is an open source Spotify downloader web app built with [spotDL](https://spotdl.readthedocs.io/en/latest/) and [Flask](https://flask.palletsprojects.com/) in Python. It can download songs, albums, and playlists from [Spotify](https://open.spotify.com), then prepare them for browser download.
 
-SpotDown is an open source website that is built using [spotDL](https://spotdl.readthedocs.io/en/latest/) and [Flask](https://flask.palletsprojects.com/en/3.0.x/) in Python allows you to to download songs/playlists/albums from [Spotify](https://open.spotify.com) to your device. Format is mp3 and user can choose between (8, 16, 32, 64, 96, 128, 192, 256, 320)kbps.
+Single songs can be downloaded as audio files, and playlists or albums are packaged into a ZIP file after download. The app defaults to 320kbps when no bitrate is selected.
 
+## Before You Start
 
-## Before you start
+SpotDown does not host copyrighted materials. It uses third-party sources to provide content requested by users. You are responsible for how you use the downloaded content.
 
-Before you start using SpotDown note that We do not host any copyrighted materials. Instead, we utilize third-party sources to provide our users with the content they seek. We should not be held liable for any content or materials accessed through our platform..
+Python and Flask knowledge is helpful, but it is not required to run the app.
 
-Adwantage is Python and Flask knowedge, but it isn't necessary.
-
-
-## Setup 🖥
+## Setup
 
 ### Requirements
-- [Python 3.10](https://www.python.org) or newer (Compatible up to Python 3.14 with patches)
-- `python-dotenv` and other dependencies in `requirements.txt`
+
+- [Python 3.10](https://www.python.org) or newer
+- Dependencies from `requirements.txt`
+- FFmpeg for audio conversion
+
+If FFmpeg is not installed globally, install SpotDL's local FFmpeg binary with:
+
+```bash
+python -m spotdl --download-ffmpeg
+```
 
 ### Authorization
+
 1. Create a `.env` file in the root directory.
-2. Add your Spotify API credentials (Get them from [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)):
-   ```env
-   CLIENT_ID=your_client_id_here
-   CLIENT_SECRET=your_client_secret_here
-   ```
+2. Add your Spotify API credentials from the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard):
+
+```env
+CLIENT_ID=your_client_id_here
+CLIENT_SECRET=your_client_secret_here
+```
 
 ### Installation
+
 1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   *Note: If you are using Python 3.14, you may need to use the patched version of `spotdl` included in `temp_deps` or patch it manually.*
+
+```bash
+pip install -r requirements.txt
+```
 
 2. Run the application:
-   ```bash
-   python app.py
-   ```
-   
-3. Open your browser at `http://127.0.0.1:5000`
 
-### Features
+```bash
+python app.py
+```
+
+3. Open your browser at `http://127.0.0.1:5000`.
+
+## Features
+
 - Download songs, albums, and playlists from Spotify.
-- Selectable quality (64kbps - 320kbps).
-- Metadata embedding (Cover art, Artist, etc.).
-- Modern, responsive Dark Mode UI.
+- Package playlist and album downloads into ZIP files.
+- Default quality is 320kbps when no bitrate is selected.
+- Selectable bitrates: 320, 256, 224, 160, 112, 96, 64, 48, and 40kbps.
+- Metadata embedding, including cover art and artist information.
+- Modern, responsive dark mode UI.
 
-**Disclaimer**: This tool is for educational purposes only. We do not host any copyrighted material.
+## Disclaimer
+
+This tool is for educational purposes only. SpotDown does not host copyrighted material.
